@@ -14,7 +14,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-      
+        <h1>This is a conflict.</h1>
       </div>
   
       </div>

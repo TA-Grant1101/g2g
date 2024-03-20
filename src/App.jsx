@@ -1,13 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Notifications from './components/Notifications';'./components/Notifications';
+import './App.css';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
+      <div>
+        <Notifications />
+      </div>
       <div>
       <h1>Books 2 Borrow</h1>
       <div className="card">
@@ -16,7 +19,7 @@ function App() {
         </button>
         <h1>Hello this is test code. Demonstrating how to do a pull request.</h1>
       </div>
-  
+
       </div>
     </>
   )

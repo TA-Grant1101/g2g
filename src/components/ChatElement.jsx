@@ -1,8 +1,17 @@
-import React from 'react';
+import { React, useEffect }  from 'react';
+import { useHistory } from 'react-router-dom';
 import './ChatElementStyles.css';
 
-
 export default function ChatElement() {
+  const history = useHistory();
+
+  useEffect(() => {
+    const uniqueId = sessionStorage.getItem('unique_id');
+    if (uniqueId) {
+      history.push('/users');
+    }
+  }, [history]);
+
   return (
     <html lang="en">
     <head>

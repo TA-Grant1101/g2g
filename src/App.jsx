@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Notifications from './components/Notifications';'./components/Notifications';
 import './App.css';
+import ChatElement from './components/ChatElement';
 
 
 function App() {
@@ -20,7 +21,10 @@ function App() {
         <h1>Hello this is test code. Demonstrating how to do a pull request.</h1>
       </div>
 
+        <ChatElement />
+
       </div>
+      
     </>
   )
 }

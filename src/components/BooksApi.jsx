@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 
 
-export default function BookApi() {
+export default function BookApi(apiUrl, q) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [books, setBooks] = useState([]);
 
-    let bookKey = "/works/OL27448W";
-
+    
     useEffect(() => {
-        fetch('https://openlibrary.org/search.json?q=' + '"' + bookKey + '"')
+        fetch(apiUrl + '"' + q + '"')
             .then((res) => res.json())
             .then(
                 (result) => {

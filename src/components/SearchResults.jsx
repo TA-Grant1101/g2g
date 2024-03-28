@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from 'react';
 
 
-const BookCoverUrl = (bookCover, coverSize) => {
+export const BookCoverUrl = (bookCover, coverSize) => {
     const coverUrl = "https://covers.openlibrary.org/b/id/";
     const mediumSize = "-M.jpg";
     const largeSize = "-L.jpg";
@@ -10,8 +10,6 @@ const BookCoverUrl = (bookCover, coverSize) => {
 
     return (coverUrl + bookCover + setSize);
 } 
-
-export default BookCoverUrl;
 
 // export function localBookDetails(id) {
 //     const restApiGet = "http://localhost:8080/api/books"
@@ -71,7 +69,7 @@ export default BookCoverUrl;
 //     }
 // }
 
-export function useApiBookDetails(q) {
+export default function ApiBookDetails(searchTerm) {
 
     const apiSearchUrl = "https://openlibrary.org/search.json?q="
     const [error, setError] = useState(null);
@@ -79,7 +77,7 @@ export function useApiBookDetails(q) {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetch(apiSearchUrl + q )
+        fetch(apiSearchUrl + searchTerm )
             .then((res) => res.json())
             .then(
                 (result) => {
@@ -102,10 +100,9 @@ export function useApiBookDetails(q) {
                 <div>
                     <ul>
                         {books.docs.map((book) => (
-                            <li>
-                                <article key={book.key}>
+                            <li key={book.key}>
                                     <div>
-                                        <img src={"https://covers.openlibrary.org/b/id/" + book.cover_i + "-M.jpg"} alt={book.title} />
+                                        <img src={BookCoverUrl(book.cover_i)} alt={book.title} />
                                     </div>
                                     <div>
                                         <h2 >{book.title}</h2>
@@ -121,7 +118,6 @@ export function useApiBookDetails(q) {
                                             </li>
                                         </ol>
                                     </div>
-                                </article>
                             </li>
                         ))}
                     </ul>
@@ -129,3 +125,21 @@ export function useApiBookDetails(q) {
             );
         }
     }
+
+
+
+
+    // useEffect(() => {
+    //     getBooks();
+    // }, []);
+
+    // async function getBooks() {
+    //     const fetchedBooks = await fetchBooks();
+    //     setBooks(fetchedBooks);
+    // }
+
+    // async function fetchBooks() {
+    //     const response = await fetch((apiSearchUrl + searchTerm ));
+    //     const bookJson = await response.json();
+    //     return bookJson;
+    //     }

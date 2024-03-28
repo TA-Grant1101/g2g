@@ -1,18 +1,17 @@
 import { React, useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useApiBookDetails } from './BookFunctions.jsx';
+//import { useApiBookDetails } from './BookFunctions.jsx';
 
-const SearchBar = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+const SearchBar = ({ setSearchTerm }) => {
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleClick = () => {
-    useApiBookDetails(searchTerm);
-  };
+  // const handleClick = () => {
+  //   setSearchTerm(document.getElementById("outlined-basic"));
+  // };
 
   return (
     <div>
@@ -31,7 +30,7 @@ const SearchBar = () => {
       />
     </div>
     <div>
-      <Button variant="contained" onClick={handleClick} style={{
+      <Button variant="contained"  style={{
             position: "right",
             top: 10,
             left: 1210,
@@ -43,5 +42,7 @@ const SearchBar = () => {
     </div>
   );
 };
+
+//onClick={ handleClick }
 
 export default SearchBar;

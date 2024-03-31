@@ -1,48 +1,44 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-//import { useApiBookDetails } from './BookFunctions.jsx';
+import ApiBookDetails from "./SearchResults";
 
-const SearchBar = ({ setSearchTerm }) => {
+const SearchBar = ({ setBooks }) => {
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  const handleClick = async() => {
+    setBooks(await ApiBookDetails(document.getElementById("outlined-basic").value));
+    console.log(ApiBookDetails(document.getElementById("outlined-basic").value))
+    };
 
-  // const handleClick = () => {
-  //   setSearchTerm(document.getElementById("outlined-basic"));
-  // };
-
-  return (
-    <div>
-    <div>
-      <TextField
-        id="outlined-basic"
-        label="Search"
-        variant="outlined"
-        onChange={handleChange}
-        style={{
-            position: "absolute",
-            top: 100,
-            left: 100,
-            right: 350,
-            }}
-      />
-    </div>
-    <div>
-      <Button variant="contained"  style={{
-            position: "right",
-            top: 10,
-            left: 1210,
-            right: 250,
-            }}>
-        Search
-      </Button>
-    </div>
-    </div>
+  return (    
+      <section>
+        <div>
+          <TextField
+            id="outlined-basic"
+            label="Search"
+            variant="outlined"
+            style={{
+                position: "absolute",
+                top: 100,
+                left: 100,
+                right: 350,
+                }}
+          />
+        </div>
+        <div>
+          <Button variant="contained" onClick={ handleClick } style={{
+                position: "right",
+                top: 10,
+                left: 1210,
+                right: 250,
+                }}>
+            Search
+          </Button>
+        </div>
+    <div id="search-result"></div>  
+  </section>
   );
-};
+}
 
-//onClick={ handleClick }
 
 export default SearchBar;

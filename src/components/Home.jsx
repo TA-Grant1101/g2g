@@ -1,15 +1,21 @@
-import {React, useState} from 'react'
+import {React, useState } from 'react'
 import Navigation from './Navigation'
 import SearchBar from './SearchBar'
-import ApiBookDetails from './SearchResults'
+import BookResults from './BookResults'
 
 const Home = () => {
-  const [searchTerm, setSearchTerm] = useState(null);
+
+  const [books, setBooks] = useState([]);
+
   return (
     <div>
+      <div>
         <Navigation/>
-        <SearchBar setSearchTerm={setSearchTerm}/>
-        <ApiBookDetails searchTerm={searchTerm}/>
+        <SearchBar setBooks={setBooks} />  
+      </div>
+      <div>
+        <div><BookResults books={books}/></div>
+      </div>
     </div>
   )
 }

@@ -1,13 +1,11 @@
 import { React } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import ApiBookDetails from "./SearchResults";
 
-const SearchBar = ({ setBooks }) => {
+const SearchBar = ({ setSearchTerm }) => {
 
   const handleClick = async() => {
-    setBooks(await ApiBookDetails(document.getElementById("outlined-basic").value));
-    console.log(ApiBookDetails(document.getElementById("outlined-basic").value))
+    setSearchTerm(document.getElementById("outlined-basic").value);
     };
 
   return (    

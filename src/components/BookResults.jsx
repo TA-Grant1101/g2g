@@ -3,6 +3,7 @@ import {React, useEffect} from 'react';
 function BookResults({ books }) {
     const resultsElement = document.getElementById("search-result");
 
+
     return (
         <div id="search-result">
             <ul className="card-grid">

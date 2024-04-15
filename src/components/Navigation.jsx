@@ -17,9 +17,18 @@ import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { BiSolidBookAdd } from "react-icons/bi";
+import Login from "./Login";
 
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const handleButtonClick = () => {
+    // Function to be called when the button is clicked
+    <div>Testtttt</div>
+   //<Login />
+
+  };
+
+  
   const menuOptions = [
         {
             text: "Home",
@@ -53,7 +62,7 @@ const Navigation = () => {
         <a href="">Register</a>
         <a href="">Contact</a>
         <a href="AddBook">AddBook</a>
-        <button className="primary-button">Login</button>
+        <button className="primary-button" onClick="Login">Login</button>
       </div>
       
       <div className="navbar-menu-container">

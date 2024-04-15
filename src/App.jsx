@@ -2,6 +2,7 @@ import './App.css'
 import Home from './components/Home'
 import AddBook from './components/AddBook'
 import BookView from './components/BookView'
+import Login from './components/Login'
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,6 +20,8 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="AddBook" element={<AddBook />} />
           <Route exact path="BookDetails/:id" element={<BookView />} />
+          <Route exact path = "Login" element={<Login />}/>
+          
         </Routes>
         </div>
       </Router>

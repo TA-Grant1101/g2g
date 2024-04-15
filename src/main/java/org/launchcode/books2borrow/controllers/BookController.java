@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:5173/", maxAge = 3600)
@@ -54,7 +53,6 @@ public class BookController {
 
     @PostMapping("/add")
     public ResponseEntity<?> processAddBook(@RequestBody BookDTO aBookDTO){
-//        BookDTO bookDTO = new BookDTO(aBookDTO);
         Book newBook = createNewBook(aBookDTO);
         bookRepository.save(newBook);
         return new ResponseEntity<>(HttpStatus.OK);

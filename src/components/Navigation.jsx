@@ -44,6 +44,7 @@ const Navigation = () => {
           {
             text: "Profile",
             icon: <AccountBoxIcon />,
+            url: "/SimpleUserDashboard"
           },
   ];
   return (
@@ -56,13 +57,8 @@ const Navigation = () => {
         <a href="/AddBook">Add Book</a>
         <a href="">Register</a>
         <a href="">Contact</a>
-<<<<<<< HEAD
-        <a href="AddBook">AddBook</a>
-        <a href="Login">Login</a>
-=======
         <a href="/SimpleUserDashboard">Profile</a>
-        <button className="primary-button">Login</button>
->>>>>>> frontend-dev
+        <button href="/LoginForm" className="primary-button" >Login</button>
       </div>
       
       <div className="navbar-menu-container">
@@ -78,7 +74,7 @@ const Navigation = () => {
           <List>
             {menuOptions.map((item) => (
               <ListItem key={item.text} disablePadding>
-                <ListItemButton>
+                <ListItemButton href={item.url}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItemButton>

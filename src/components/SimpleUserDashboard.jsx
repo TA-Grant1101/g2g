@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Navigation from './Navigation';
 import MyLibrary from './MyLibrary';
+import Chat from './Chat';
 
 
 function CustomTabPanel(props) {
@@ -45,7 +46,7 @@ function CustomTabPanel(props) {
 
 
 
-const SimpleUserDashboard = () => {
+const SimpleUserDashboard = ( { user } ) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -83,7 +84,7 @@ const SimpleUserDashboard = () => {
                 My WishList
             </CustomTabPanel>
             <CustomTabPanel value={value} index={3}>
-                Chat
+                <Chat user={user} />
             </CustomTabPanel>
         </div>
         </>

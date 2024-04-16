@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Navigation from './Navigation';
 import MyLibrary from './MyLibrary';
@@ -23,7 +23,11 @@ function ProfileTab(props) {
       >
         {value === index && (
          // <Box sx={{ p: 3 }}>
-         <div>{children}</div>
+          <Container>
+            <Box>
+                {children}
+            </Box>
+          </Container>
             //<Typography component="div">{children}</Typography>
          // </Box>
         )}

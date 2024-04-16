@@ -51,7 +51,7 @@ const MyLibrary = () => {
             </tr>
           </thead >
           <tbody className="myBooksTable">
-            {myBooks?.map((book) => (
+            {myBooks.map((book) => (
               <tr className="myBooksTable" key={book.id}>
                 <td className="myBooksTable">
                   <label>

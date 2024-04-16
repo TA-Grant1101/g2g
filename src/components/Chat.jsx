@@ -17,7 +17,7 @@ const Chat = ( { senderId, recipientId } ) => {
       });
   }, [senderId, recipientId]);
 
-const handleSendMessage = () => {
+  const handleSendMessage = () => {
     const message = {
         content: newMessage,
         senderId,
@@ -31,17 +31,17 @@ const handleSendMessage = () => {
         })
         .catch(error => {
             console.error('Error sending message:', error);
-        });
-};
+    });
+  };
 
   return (
-    <section>
+    <div>
       {messages.map(message => (
-          <div key={message.id}>{message.content}</div>
+          <p key={message.id}>{message.content}</p>
       ))}
       <input type="text" value={newMessage} onChange={e => setNewMessage(e.target.value)} />
       <button onClick={handleSendMessage}>Send</button>
-    </section>
+    </div>
   );
 };
 

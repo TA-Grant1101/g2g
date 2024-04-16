@@ -6,7 +6,8 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Navigation from './Navigation';
 import MyLibrary from './MyLibrary';
-import Chat from './Chat';
+import Chat from './chatComponents/Chat';
+import Testing from './Testing';
 
 
 function ProfileTab(props) {
@@ -22,14 +23,11 @@ function ProfileTab(props) {
         {...other}
       >
         {value === index && (
-         // <Box sx={{ p: 3 }}>
           <Container>
-            <Box>
+            <Box  sx={{ p: 3 }}>
                 {children}
             </Box>
           </Container>
-            //<Typography component="div">{children}</Typography>
-         // </Box>
         )}
       </div>
     );
@@ -82,10 +80,10 @@ const SimpleUserDashboard = ( { user } ) => {
             <MyLibrary />
         </ProfileTab>
         <ProfileTab value={value} index={2}>
-            My WishList
+            <Testing />
         </ProfileTab>
         <ProfileTab value={value} index={3}>
-            <Chat user={user} />
+            <Chat user={ user } />
         </ProfileTab>
       </div>
     </>

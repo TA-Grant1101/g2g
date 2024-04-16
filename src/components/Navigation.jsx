@@ -18,7 +18,7 @@ import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { BiSolidBookAdd } from "react-icons/bi";
 
-const Navigation = () => {
+const Navigation = ( {userId} ) => {
   const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
         {
@@ -57,7 +57,7 @@ const Navigation = () => {
         <a href="/AddBook">Add Book</a>
         <a href="">Register</a>
         <a href="">Contact</a>
-        <a href="/SimpleUserDashboard">Profile</a>
+        <a href={`/${ userId }/SimpleUserDashboard`}>Profile</a>
         <button href="/LoginForm" className="primary-button" >Login</button>
       </div>
       

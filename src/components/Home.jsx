@@ -3,10 +3,11 @@ import Navigation from './Navigation'
 import SearchBar from './SearchBar'
 import DiplayBooks from './DiplayBooks'
 
-const Home = () => {
+const Home = ( user ) => {
+  console.log(user)
   return (
     <div>
-        <Navigation/>
+        <Navigation user={ user } />
        
         <DiplayBooks/>
     </div>

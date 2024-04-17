@@ -1,28 +1,54 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
-const LoginForm = () => {
-    const [username, setUsername] = useState('');
+function LoginForm({setUser}) {
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-        axios.post('/login', { username, password })
-            .then(response => {
-                localStorage.setItem('token', response.data.token);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const authToken = btoa(`${email}:${password}`);
+        try {
+            const response = await axios.get('http://localhost:8080/user', {
+                headers: {
+                    'Authorization': `Basic ${authToken}`
+                }
                 
-            })
-            .catch(error => {
-                console.error('Login error:', error);
             });
+  //          await setUser(response);
+            console.log('Response:', response.data);
+            console.log('All Headers:', response.headers);
+
+            const authHeader = response.headers['authorization'];
+            console.log('Authorization Header:', authHeader);
+
+            if (authHeader) {
+                localStorage.setItem('jwt', authHeader);
+                console.log('JWT saved to local storage:', authHeader);
+                window.location.replace("/");
+            } else {
+                console.error('Authorization header is missing or improperly formatted.');
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            console.error('Response status:', error.response ? error.response.status : 'No response');
+            console.error('Response data:', error.response ? error.response.data : 'No response data');
+        }
     };
 
     return (
-        <div>
-            <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-            <button onClick={handleLogin}>Login</button>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Email:</label>
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+            </div>
+            <button type="submit">Login</button>
+        </form>
     );
-};
+}
   
   export default LoginForm;

@@ -43,7 +43,7 @@ const Chat = ( { user } ) => {
         senderId: senderId,
         recipientId: recipientEmail
     };
-  };
+  
 
   axios.post('/api/messages/send', message)
       .then(response => {
@@ -52,14 +52,14 @@ const Chat = ( { user } ) => {
       })
       .catch(error => {
           console.error('Error sending message:', error);
-  });
+  }); };
   
   if(messages.length > 0 ) {
     return (
       <div>
-        {messages.map((message) => (
-            <div key={message.id}>
-              <p>{message.content}</p>
+        {messages.map( eachMessage => (
+            <div key={eachMessage.id}>
+              <p>{eachMessage.content}</p>
             </div>
         ))}
         <input type="text" value={newMessage} onChange={e => setNewMessage(e.target.value)} />

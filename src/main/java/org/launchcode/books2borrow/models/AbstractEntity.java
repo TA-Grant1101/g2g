@@ -29,4 +29,5 @@ public abstract class AbstractEntity {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

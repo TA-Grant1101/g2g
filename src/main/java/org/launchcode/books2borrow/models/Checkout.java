@@ -55,4 +55,7 @@ public class Checkout  extends AbstractEntity{
     public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
+
+    public Checkout() {
+    }
 }

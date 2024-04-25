@@ -45,11 +45,16 @@ public class CheckoutController {
             int borrowerId = customer.get(0).getId();
             String borrowerName = customer.get(0).getName();
             int lenderId = book.getCustomerId();
-            Customer lenders = customerRepository.findById(lenderId);
-            String lenderName = lenders.getName();
-            Checkout newCheckout = createNewCheckout(aCheckoutDTO.getBookId(), bookTitle, lenderId, lenderName, borrowerId, borrowerName);
-            checkoutRepository.save(newCheckout);
-            return new ResponseEntity<>(HttpStatus.OK);
+            if(borrowerId != lenderId) {
+                Customer lenders = customerRepository.findById(lenderId);
+                String lenderName = lenders.getName();
+                Checkout newCheckout = createNewCheckout(aCheckoutDTO.getBookId(), bookTitle, lenderId, lenderName, borrowerId, borrowerName);
+                checkoutRepository.save(newCheckout);
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
         }
         else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

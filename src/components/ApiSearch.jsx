@@ -9,7 +9,7 @@ function ApiSearch() {
     const [searchTerm, setSearchTerm] = useState([]);
 
     const handleClick = () => {
-      setSearchTerm(document.getElementById("outlined-basic").value);
+      setSearchTerm(document.getElementById("fullWidth").value);
     };
 
     useEffect(() => {
@@ -34,27 +34,16 @@ function ApiSearch() {
       return <>{error.message}</>;
     } else if (!isLoaded) {
       return (
-        <div>
-          <div>
+        <div className='searchBar'>
+          <form onSubmit={handleClick}>
             <TextField
-              id="outlined-basic"
+              id="fullWidth"
               label="Search"
               variant="outlined"
-              style={{
-                  position: "absolute",
-                  top: 100,
-                  left: 100,
-                  right: 350,
-                  }}
             />
-          </div>
+          </form>
           <div>
-            <Button variant="contained" onClick={handleClick} style={{
-                  position: "right",
-                  top: 10,
-                  left: 1210,
-                  right: 250,
-                  }}>
+            <Button variant="contained" onClick={handleClick}>
               Search
             </Button>
           </div>
@@ -63,27 +52,16 @@ function ApiSearch() {
         </div>)
     } else {
       return (
-          <div>
-            <div>
+          <div className='searchBar'>
+            <form onSubmit={handleClick}>
               <TextField
-                id="outlined-basic"
+                id="fullWidth"
                 label="Search"
                 variant="outlined"
-                style={{
-                    position: "absolute",
-                    top: 100,
-                    left: 100,
-                    right: 350,
-                    }}
               />
-            </div>
+            </form>
             <div>
-              <Button variant="contained" onClick={handleClick} style={{
-                    position: "right",
-                    top: 10,
-                    left: 1210,
-                    right: 250,
-                    }}>
+              <Button variant="contained" onClick={handleClick}>
                 Search
               </Button>
             </div>

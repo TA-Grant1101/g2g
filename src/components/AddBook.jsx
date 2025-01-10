@@ -52,28 +52,19 @@ const AddBook = () =>{
         <>
             <Navigation />
             <br/>
-            <div>
+            <div className='searchBar'>
+            <form onSubmit={handleClick}>
             <TextField
               id="outlined-basic"
               label="Search"
               variant="outlined"
-              style={{
-                  position: "absolute",
-                  top: 100,
-                  left: 100,
-                  right: 350,
-                  }}
             />
-            </div>
+            </form>
             <div>
-                <Button variant="contained" onClick={handleClick} style={{
-                  position: "right",
-                  top: -15,
-                  left: 1210,
-                  right: 250,
-                  }}>
+                <Button variant="contained" onClick={handleClick}>
               Search
             </Button>
+            </div>
             </div>
             <div>
                 <h1>Loading...</h1>
